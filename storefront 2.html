@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R&G HOLDINGS — Home & Lifestyle Goods</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16191A;
+    --bone:#FFFFFF;
+    --signal:#2D5A3D;
+    --signal-light:#E8EFE9;
+    --stone:#5C5850;
+    --line: rgba(22,25,26,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    letter-spacing:-0.02em;
+    line-height:0.95;
+  }
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  :focus-visible{outline:3px solid var(--signal);outline-offset:2px;}
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:var(--bone);
+    border-bottom:2px solid var(--ink);
+  }
+  .header-inner{
+    max-width:1400px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;
+  }
+  .logo{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    font-size:22px;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--signal);}
+  nav{display:flex;gap:36px;}
+  nav a{
+    font-size:13px;font-weight:600;
+    letter-spacing:0.08em;text-transform:uppercase;
+    position:relative;padding-bottom:4px;
+  }
+  nav a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:2px;background:var(--signal);
+    transition:width 0.25s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .header-actions{display:flex;align-items:center;gap:20px;}
+  .cart-btn{
+    font-size:13px;font-weight:700;
+    letter-spacing:0.04em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .cart-count{
+    background:var(--ink);color:var(--bone);
+    width:20px;height:20px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:11px;
+  }
+  @media (max-width:860px){
+    nav{display:none;}
+  }
+
+  /* ============ TICKER (signature element) ============ */
+  .ticker-wrap{
+    background:var(--ink);
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:2px solid var(--ink);
+  }
+  .ticker{
+    display:inline-flex;
+    animation:scroll-left 32s linear infinite;
+  }
+  .ticker span{
+    color:var(--bone);
+    font-size:12px;font-weight:600;
+    letter-spacing:0.12em;text-transform:uppercase;
+    padding:10px 0;
+  }
+  .ticker .dot{color:#7FAE8C;padding:0 18px;}
+  @keyframes scroll-left{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker{animation:none;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    max-width:1400px;margin:0 auto;
+    padding:96px 32px 80px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:64px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:13px;font-weight:700;
+    letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero-eyebrow::before{
+    content:'';width:8px;height:8px;
+    background:var(--signal);border-radius:50%;
+    display:inline-block;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.3;}
+  }
+  .hero h1{
+    font-size:clamp(48px,7vw,84px);
+    margin-bottom:28px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--signal);
+    -webkit-text-stroke:0;
+  }
+  .hero p{
+    font-size:18px;line-height:1.6;
+    color:var(--ink);
+    max-width:480px;
+    margin-bottom:36px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ink);color:var(--bone);
+    padding:18px 36px;font-size:14px;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover{background:var(--signal);transform:translateY(-2px);}
+  .btn-secondary{
+    border:2px solid var(--ink);
+    padding:16px 34px;font-size:14px;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+    transition:all 0.2s ease;
+  }
+  .btn-secondary:hover{background:var(--ink);color:var(--bone);}
+
+  .hero-visual{
+    aspect-ratio:1/1.1;
+    background:var(--ink);
+    border-radius:4px;
+    position:relative;
+    overflow:hidden;
+    display:flex;align-items:flex-end;
+  }
+  .hero-visual-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:40px 40px;
+    opacity:0.15;
+  }
+  .hero-visual-tag{
+    position:relative;z-index:2;
+    background:var(--signal);color:var(--bone);
+    margin:24px;padding:14px 20px;
+    font-size:13px;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+    max-width:280px;
+  }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding:56px 24px 56px;}
+    .hero-visual{aspect-ratio:16/10;}
+  }
+
+  /* ============ SHELF (category aisles) ============ */
+  .shelf-section{padding:40px 0 80px;}
+  .shelf-header{
+    max-width:1400px;margin:0 auto;
+    padding:0 32px 28px;
+    display:flex;align-items:baseline;justify-content:space-between;
+  }
+  .shelf-header h2{font-size:32px;}
+  .shelf-header .shelf-count{
+    font-size:13px;color:var(--stone);font-weight:600;
+  }
+  .aisle{
+    display:flex;gap:20px;
+    overflow-x:auto;
+    padding:8px 32px 24px;
+    scroll-snap-type:x mandatory;
+    max-width:1400px;margin:0 auto;
+  }
+  .aisle::-webkit-scrollbar{height:6px;}
+  .aisle::-webkit-scrollbar-thumb{background:var(--stone);border-radius:3px;}
+  .product-card{
+    flex:0 0 280px;
+    scroll-snap-align:start;
+    background:#fff;
+    border:2px solid var(--ink);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .product-card:hover{
+    transform:translateY(-4px);
+    box-shadow:6px 6px 0 var(--signal);
+  }
+  .product-img{
+    aspect-ratio:1;
+    background:linear-gradient(135deg, #e8e2d6, #d4cdbc);
+    border-bottom:2px solid var(--ink);
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .product-img-label{
+    font-size:11px;font-weight:700;color:var(--stone);
+    letter-spacing:0.08em;text-transform:uppercase;
+  }
+  .product-badge{
+    position:absolute;top:10px;left:10px;
+    background:var(--signal);color:var(--bone);
+    font-size:10px;font-weight:700;
+    padding:4px 8px;letter-spacing:0.06em;text-transform:uppercase;
+  }
+  .product-info{padding:18px;}
+  .product-cat{
+    font-size:11px;font-weight:700;color:var(--signal);
+    letter-spacing:0.08em;text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .product-name{font-size:16px;font-weight:700;margin-bottom:8px;}
+  .product-price{
+    display:flex;align-items:center;gap:10px;
+    font-size:15px;font-weight:700;
+  }
+  .price-was{color:var(--stone);text-decoration:line-through;font-weight:500;font-size:13px;}
+
+  /* ============ BRAND STRIP ============ */
+  .brand-strip{
+    border-top:2px solid var(--ink);
+    border-bottom:2px solid var(--ink);
+    padding:40px 32px;
+    max-width:1400px;margin:0 auto;
+  }
+  .brand-strip-label{
+    text-align:center;font-size:12px;font-weight:700;
+    letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--stone);margin-bottom:24px;
+  }
+  .brand-row{
+    display:flex;justify-content:center;align-items:center;
+    gap:56px;flex-wrap:wrap;
+  }
+  .brand-row span{
+    font-family:'Archivo',sans-serif;font-weight:700;
+    font-size:20px;color:var(--ink);opacity:0.65;
+    transition:opacity 0.2s ease;
+  }
+  .brand-row span:hover{opacity:1;}
+
+  /* ============ VALUE PROPS ============ */
+  .values{
+    max-width:1400px;margin:0 auto;
+    padding:80px 32px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:48px;
+  }
+  .value-item .value-num{
+    font-size:13px;font-weight:700;color:var(--signal);
+    margin-bottom:16px;letter-spacing:0.04em;
+  }
+  .value-item h3{font-size:22px;margin-bottom:12px;}
+  .value-item p{font-size:15px;color:var(--stone);line-height:1.6;}
+  @media (max-width:860px){
+    .values{grid-template-columns:1fr;gap:36px;}
+  }
+
+  /* ============ NEWSLETTER ============ */
+  .newsletter{
+    background:var(--ink);color:var(--bone);
+    padding:80px 32px;
+  }
+  .newsletter-inner{
+    max-width:680px;margin:0 auto;text-align:center;
+  }
+  .newsletter h2{font-size:36px;margin-bottom:16px;color:var(--bone);}
+  .newsletter p{color:#b8b3a6;margin-bottom:32px;font-size:16px;}
+  .newsletter-form{
+    display:flex;gap:0;
+    border:2px solid var(--bone);
+  }
+  .newsletter-form input{
+    flex:1;background:none;border:none;
+    padding:18px 20px;color:var(--bone);font-size:15px;
+    font-family:'Inter',sans-serif;
+  }
+  .newsletter-form input::placeholder{color:#8a8578;}
+  .newsletter-form input:focus{outline:none;}
+  .newsletter-form button{
+    background:var(--signal);color:var(--bone);
+    padding:18px 32px;font-weight:700;font-size:13px;
+    letter-spacing:0.06em;text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .newsletter-form button:hover{background:var(--bone);color:var(--ink);}
+
+  /* ============ FOOTER ============ */
+  footer{padding:56px 32px 32px;max-width:1400px;margin:0 auto;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+    margin-bottom:48px;
+  }
+  .footer-col h4{
+    font-size:12px;font-weight:700;letter-spacing:0.08em;
+    text-transform:uppercase;margin-bottom:18px;color:var(--stone);
+  }
+  .footer-col a{
+    display:block;font-size:14px;margin-bottom:10px;
+    color:var(--ink);
+  }
+  .footer-col a:hover{color:var(--signal);}
+  .footer-brand p{font-size:14px;color:var(--stone);max-width:280px;line-height:1.6;margin-top:14px;}
+  .footer-bottom{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+    display:flex;justify-content:space-between;
+    font-size:12px;color:var(--stone);
+    flex-wrap:wrap;gap:12px;
+  }
+  @media (max-width:860px){
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">R&amp;G <span>HOLDINGS</span></a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#brands">Brands</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn">Cart <span class="cart-count">0</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>NOW STOCKING: ECO-REFILL HOUSEHOLD <span class="dot">•</span> HOME WELLNESS <span class="dot">•</span> SMART HOME ESSENTIALS <span class="dot">•</span> NEW BRANDS ADDED MONTHLY <span class="dot">•</span> NOW STOCKING: ECO-REFILL HOUSEHOLD <span class="dot">•</span> HOME WELLNESS <span class="dot">•</span> SMART HOME ESSENTIALS <span class="dot">•</span> NEW BRANDS ADDED MONTHLY <span class="dot">•</span></span>
+  </div>
+</div>
+
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Curated, not crowded</div>
+    <h1>Good homes run on <em>fewer, better</em> things.</h1>
+    <p>We hunt down the household, wellness, and smart-home brands worth your shelf space — so you don't have to dig through a thousand listings to find them.</p>
+    <div class="hero-ctas">
+      <a href="#shop" class="btn-primary">Shop the aisles</a>
+      <a href="#about" class="btn-secondary">Our standards</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-grid"></div>
+    <div class="hero-visual-tag">Every brand we carry passes a 3-point check: ingredients, sourcing, value</div>
+  </div>
+</section>
+
+<section class="shelf-section" id="shop">
+  <div class="shelf-header">
+    <h2>Eco &amp; Refill Household</h2>
+    <span class="shelf-count">12 products</span>
+  </div>
+  <div class="aisle">
+    <div class="product-card">
+      <div class="product-img">
+        <span class="product-badge">New</span>
+        <span class="product-img-label">Product photo</span>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Cleaning</div>
+        <div class="product-name">Mold &amp; Mildew Refill Spray</div>
+        <div class="product-price">$18.00</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Body Care</div>
+        <div class="product-name">Closed-Loop Hand Soap Refill</div>
+        <div class="product-price">$14.00</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Kitchen</div>
+        <div class="product-name">Bamboo Dish Brush Set</div>
+        <div class="product-price">$22.00</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Cleaning</div>
+        <div class="product-name">Plastic-Free Multi-Surface Kit</div>
+        <div class="product-price">$26.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shelf-section">
+  <div class="shelf-header">
+    <h2>Home Wellness</h2>
+    <span class="shelf-count">9 products</span>
+  </div>
+  <div class="aisle">
+    <div class="product-card">
+      <div class="product-img">
+        <span class="product-badge">Bestseller</span>
+        <span class="product-img-label">Product photo</span>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Self-Care</div>
+        <div class="product-name">Massage Rest Kit</div>
+        <div class="product-price">$64.00 <span class="price-was">$89.95</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Oral Care</div>
+        <div class="product-name">Non-Toxic Care Essentials Set</div>
+        <div class="product-price">$32.00</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Aromatherapy</div>
+        <div class="product-name">Herbal Wind-Down Bundle</div>
+        <div class="product-price">$29.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shelf-section">
+  <div class="shelf-header">
+    <h2>Smart Home</h2>
+    <span class="shelf-count">7 products</span>
+  </div>
+  <div class="aisle">
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Lighting</div>
+        <div class="product-name">Smart LED Strip, App-Controlled</div>
+        <div class="product-price">$24.00</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img">
+        <span class="product-badge">New</span>
+        <span class="product-img-label">Product photo</span>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Security</div>
+        <div class="product-name">WiFi Entry Sensor, 2-Pack</div>
+        <div class="product-price">$38.00</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img"><span class="product-img-label">Product photo</span></div>
+      <div class="product-info">
+        <div class="product-cat">Storage</div>
+        <div class="product-name">Motorized Garage Organizer</div>
+        <div class="product-price">$119.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brand-strip" id="brands">
+  <div class="brand-strip-label">Brands on our shelf</div>
+  <div class="brand-row">
+    <span>WILD &amp; STONE</span>
+    <span>WELLNESSE</span>
+    <span>JUNGLE CULTURE</span>
+    <span>RUSTIC STRENGTH</span>
+    <span>SMARTERHOME</span>
+  </div>
+</section>
+
+<section class="values" id="about">
+  <div class="value-item">
+    <div class="value-num">01 — Curation</div>
+    <h3>We don't carry everything.</h3>
+    <p>Every brand here is authorized, vetted, and chosen for one reason: it earns a spot in a home we'd actually want to live in.</p>
+  </div>
+  <div class="value-item">
+    <div class="value-num">02 — Sourcing</div>
+    <h3>Authorized, not gray-market.</h3>
+    <p>We buy direct from brands and their official distributors — so warranties, ingredients, and quality are exactly what they claim to be.</p>
+  </div>
+  <div class="value-item">
+    <div class="value-num">03 — Growth</div>
+    <h3>The shelf keeps growing.</h3>
+    <p>New categories and brands are added monthly as we find things worth your attention. Sign up below to see them first.</p>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h2>Get first look at new arrivals.</h2>
+    <p>No spam, just the short list of what's worth adding to your home.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="you@email.com" required>
+      <button type="submit">Notify me</button>
+    </form>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-col footer-brand">
+      <a href="#" class="logo">R&amp;G <span style="color:var(--signal);">HOLDINGS</span></a>
+      <p>A curated online retailer for home, wellness, and smart-home goods. Authorized seller of every brand on our shelf.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#shop">Eco &amp; Refill</a>
+      <a href="#shop">Home Wellness</a>
+      <a href="#shop">Smart Home</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">Our Standards</a>
+      <a href="#brands">Brands We Carry</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="mailto:hello@rgholdings.com">hello@rgholdings.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 R&amp;G Holdings. All rights reserved.</span>
+    <span>Long Beach, CA</span>
+  </div>
+</footer>
+
+</body>
+</html>
